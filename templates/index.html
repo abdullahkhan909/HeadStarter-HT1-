@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Recommender</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="icon" href="/static/favicon-16x16.png" type="image/x-icon" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Recipe Recommender</h1>
+        <form id="ingredient-form">
+            <label for="ingredients">Enter Ingredients (comma-separated):</label>
+            <input type="text" id="ingredients" name="ingredients">
+            <button type="submit">Get Recipes</button>
+        </form>
+        <div class="results">
+            <div class="recipes">
+                <h2>Recommended Recipes:</h2>
+                <ul id="recipe-list"></ul>
+            </div>
+            <div class="steps">
+                <h2>Recipe Steps:</h2>
+                <div id="recipe-steps"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#ingredient-form').on('submit', function (e) {
+                e.preventDefault();
+                const ingredients = $('#ingredients').val();
+                $.post('/recommend', { ingredients: ingredients }, function (data) {
+                    const recipes = data.recipes;
+                    $('#recipe-list').empty();
+                    recipes.forEach(function (recipe) {
+                        $('#recipe-list').append(`<li>${recipe.name} <button onclick="showSteps(${recipe.id})">Show Steps</button></li>`);
+                    });
+                });
+            });
+        });
+
+        function showSteps(recipeId) {
+            $.get(`/recipe/${recipeId}`, function (data) {
+                $('#recipe-steps').text(data.steps);
+            });
+        }
+    </script>
+</body>
+
+</html>

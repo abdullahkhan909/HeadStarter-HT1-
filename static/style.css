@@ -1,0 +1,149 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('/static/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    width: calc(100% - 30px); /* Adjust for padding and border */
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.recipes, .steps {
+    flex: 1;
+    margin: 0 10px;
+    text-align: left;
+}
+
+.recipes h2, .steps h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+li button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border: none;
+    background: #2c3e50;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+li button:hover {
+    background: #34495e;
+    transform: scale(1.05);
+}
+
+#recipe-steps {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
+    max-height: 300px; /* Adjust this value as needed */
+    overflow-y: auto;
+}
+
+#recipe-steps p {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+
+    .results {
+        flex-direction: column;
+    }
+
+    .recipes, .steps {
+        margin: 20px 0;
+    }
+}
